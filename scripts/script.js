@@ -89,7 +89,7 @@ function stopTimer(workOrBreak) {
       timers["break"].minutes *= 3; // Après quatres pauses, la durée de la pause est trois fois plus longue.
       timers["break"].count = 0;
       // Les tomates sont réinitialisés:
-      setTomatoesOpacity(timers["break"].count);
+      setTomatoesOpacity(0);
     }
     startTimer("break");
     countingDown["work"] = false;
@@ -107,4 +107,14 @@ function pauseTimer() {
   clearInterval(timers["work"].timerID);
   clearInterval(timers["break"].timerID);
   pause = true;
+}
+
+function setTomatoesOpacity(numberOfTomatoes) {
+  const tomatoes = document.querySelectorAll(".tomato-session");
+  // Le nombre de tomate opaque est ajustée:
+  for (let iteration = 0; iteration < 4; iteration ++) {
+    if (iteration < numberOfTomatoes) {
+      tomatoes[iteration].style.opacity = 1;
+    } else { tomatoes[iteration].style.opacity = 0.25;}
+  }
 }
