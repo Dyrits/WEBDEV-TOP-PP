@@ -7,10 +7,6 @@ const minutes = document.querySelector("#work-minutes");
 const seconds = document.querySelector("#work-seconds");
 
 const tomatoLogo = document.querySelector("#logo");
-const countingDown = {
-  work: false,
-  break: false,
-};
 
 tomatoLogo.addEventListener("click", startSession);
 
@@ -41,12 +37,13 @@ function startSession() {
 
     // Check if the seconds and minutes counter has reached 0
     // If reached 0 then end the session
-    if (seconds <= 0) {
-      if (minutes <= 0) {
+    if (sec <= 0) {
+      if (mn <= 0) {
         // Clears the interval to stops counter
         clearInterval(minutes_interval);
         clearInterval(seconds_interval);
       }
     }
+    sec = 60;
   }
 }
