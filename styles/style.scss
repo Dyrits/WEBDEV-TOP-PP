@@ -5,138 +5,127 @@ $tomato-green: #4DC126;
 
 
 @mixin counter-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    color: $tomato-green;
-    text-shadow: 0 0 2px $tomato-red;
-    margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  color: $tomato-green;
+  text-shadow: 0 0 2px $tomato-red;
+  margin: 20px;
 }
 
+@mixin input-thumb {
+  box-shadow: 3px 3px 3px $tomato-green;
+  border: 2px solid $tomato-green;
+  height: 23px;
+  width: 23px;
+  border-radius: 23px;
+  background: darken($tomato-green, 20%);
+  cursor: pointer;
+}
+
+@mixin input-track {
+  width: 100%;
+  height: 12px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px $tomato-red;
+  background: $tomato-red;
+  border-radius: 6px;
+  border: 1px solid darken($tomato-red, 20%);
+}
 
 body {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    background-image: url("tomatoes.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    font-family: 'Mystery Quest', cursive;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background-image: url("tomatoes.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  font-family: 'Mystery Quest', cursive;
 }
 
 
 main {
-    width: 60%;
-    margin: 0 auto;
-    display: flex;
-    flex-shrink: 2;
-    justify-content: space-evenly;
-    align-items: center;
-    @media (max-width: 768px) {
-        width: 80%;
-        padding-top: 100px;
-    }
-    @media (max-width: 480px) {
-        flex-wrap: wrap;
-        padding-top: 0px;
-    }
-    h2 { @media (max-width: 480px) {display: none;} }
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  flex-shrink: 2;
+  justify-content: space-evenly;
+  align-items: center;
+  @media (max-width: 768px) {
+      width: 80%;
+      padding-top: 100px;
+  }
+  @media (max-width: 480px) {
+      flex-wrap: wrap;
+      padding-top: 0px;
+  }
+  h2 { @media (max-width: 480px) {display: none;} }
 }
 
 
 .countdown {
-    box-sizing: border-box;
-    width: 250px;
-    font-size: 5rem;
-    @media (max-width: 768px) {
-      font-size: 2.5rem;
-      width: 125px;
-    }
+  box-sizing: border-box;
+  width: 250px;
+  font-size: 5rem;
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+    width: 125px;
+  }
 }
 
 
 #left {
-    text-align: center;
-    #work { @include counter-box(); }
+  text-align: center;
+  #work { @include counter-box(); }
 }
 
 #center {
-    text-align: center;
-    #logo {
-    padding-top: 10px;
-    width: 300px;
-    @media (max-width: 768px) { width: 200px; }
-    @media (max-width: 480px) { width: 100px; }
-    }
-    h1 {
-    color: $tomato-red;
-    text-transform: uppercase;
-    text-shadow: 0 0 2px $tomato-green;
-    font-size: 2rem;
-    @media (max-width: 768px) { font-size: 1.5rem; }
-    }
-    .tomato-session {
-        width: 50px;
-        display: inline-block;
-        opacity: 0.25;
-        @media (max-width: 768px) { width: 25px; }
-    }
+  text-align: center;
+  #logo {
+  padding-top: 10px;
+  width: 300px;
+  @media (max-width: 768px) { width: 200px; }
+  @media (max-width: 480px) { width: 100px; }
+  }
+  h1 {
+  color: $tomato-red;
+  text-transform: uppercase;
+  text-shadow: 0 0 2px $tomato-green;
+  font-size: 2rem;
+  @media (max-width: 768px) { font-size: 1.5rem; }
+  }
+  .tomato-session {
+    width: 50px;
+    display: inline-block;
+    opacity: 0.25;
+    @media (max-width: 768px) { width: 25px; }
+  }
 }
 
 #right {
-    text-align: center;
-    #break { @include counter-box(); }
+  text-align: center;
+  #break { @include counter-box(); }
 }
 
 
 input[type=range] {
-    height: 34px;
+  height: 34px;
+  -webkit-appearance: none;
+  margin: 10px 0;
+  width: 100%;
+  background-color: transparent;
+  &:focus { outline: none; }
+  &::-webkit-slider-runnable-track { @include input-track(); }
+  &::-webkit-slider-runnable-track  { @include input-track(); }
+  &::-webkit-slider-thumb {
+    @include input-thumb();
     -webkit-appearance: none;
-    margin: 10px 0;
-    width: 100%;
-    background-color: transparent;
-    &:focus { outline: none; }
-    &::-webkit-slider-runnable-track {
-        width: 100%;
-        height: 12px;
-        cursor: pointer;
-        box-shadow: 1px 1px 1px $tomato-red;
-        background: $tomato-red;
-        border-radius: 6px;
-        border: 1px solid darken($tomato-red, 20%);
-    }
-    &::-webkit-slider-thumb {
-        box-shadow: 3px 3px 3px $tomato-green;
-        border: 2px solid $tomato-green;
-        height: 23px;
-        width: 23px;
-        border-radius: 23px;
-        background: darken($tomato-green, 20%);
-        cursor: pointer;
-        -webkit-appearance: none;
-        margin-top: -7px;
-    }
-    &:focus::-webkit-slider-runnable-track { background: $tomato-red; }
-    &::-moz-range-track {
-        width: 100%;
-        height: 12px;
-        cursor: pointer;
-        box-shadow: 1px 1px 1px $tomato-red;
-        background: $tomato-red;
-        border-radius: 6px;
-        border: 1px solid darken($tomato-red, 20%);
-    }
-    &::-moz-range-thumb {
-        box-shadow: 3px 3px 3px $tomato-green;
-        border: 2px solid $tomato-green;
-        height: 23px;
-        width: 23px;
-        border-radius: 23px;
-        background: darken($tomato-green, 20%);
-        cursor: pointer;
-    }
-    &::-moz-focus-outer { border: 0;}
+    margin-top: -7px;
+  }
+  &::-moz-range-track { @include input-track(); }
+  &::-moz-range-thumb { @include input-thumb(); }
+  &::-moz-focus-outer { border: 0;}
 }
