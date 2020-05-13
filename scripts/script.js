@@ -36,17 +36,24 @@ breakTimeRange.onchange = () => {
   else if (pause) { updateTimer("break", "minutes", breakTimeRange.value); }
 }
 
-tomatoLogo.onclick = () => {
+
+tomatoLogo.addEventListener("click", () => {
   if (!pause) {
-    pauseTimer()
-    updateTimer("work", "minutes", workTimeRange.value);
-    updateTimer("break", "minutes", breakTimeRange.value);
+    pauseTimer();
   }
   else {
     pause = false;
     countingDown["break"] ? startTimer("break") : startTimer("work"); // Le timer est relancé sur la phase où il s'était arrêté.
   }
-} 
+})
+
+tomatoLogo.addEventListener("dblclick", () => {
+    pauseTimer()
+    timers["work"].seconds = 0;
+    timers["break"].seconds = 0;
+    updateTimer("work", "minutes", workTimeRange.value);
+    updateTimer("break", "minutes", breakTimeRange.value);
+})
 
 
 function updateTimer(workOrBreak, minutesOrSeconds, value) {
@@ -60,7 +67,6 @@ function updateTimer(workOrBreak, minutesOrSeconds, value) {
     document.querySelector("#" + workOrBreak + "-seconds").innerHTML = "00"; // Selectionne et met à jour le compteur correspondant.
     // Le timer est remis à jour afin que celui-ci soit aussi à jour dans le cas d'une mise à jour manuelle.
     timers[workOrBreak].minutes = Number(value);
-    timers[workOrBreak].seconds = 0;
   }
   // Mise à jour des secondes:
   else if (minutesOrSeconds === "seconds") {
