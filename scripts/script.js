@@ -17,13 +17,15 @@ const timers = {
     minutes: 5,
     seconds: 0,
     timerID: null,
+    count: 0,
   }
 }
+let pause = true;
 
 workTimeRange.onchange = () => {
   workTimeLabel.innerHTML = workTimeRange.value;
   // Si le compteur tourne déjà, la valeur n'est pas mis à jour:
-  if (!countingDown["work"]) { updateTimer("work", "minutes", breakTimeRange.value); }
+  if (!countingDown["work"]) { updateTimer("work", "minutes", workTimeRange.value); }
 }
 
 breakTimeRange.onchange = () => {
@@ -33,7 +35,11 @@ breakTimeRange.onchange = () => {
 }
 
 tomatoLogo.onclick = () => {
-  startTimer("work");
+  if (!pause) {pauseTimer()}
+  else {
+    pause = false;
+    countingDown["break"] ? startTimer("break") : startTimer("work"); // Le timer est relancé sur la phase où il s'était arrêté.
+  }
 } 
 
 
@@ -79,12 +85,26 @@ function stopTimer(workOrBreak) {
   // L'intervalle est stoppé, et l'autre compteur est lancé:
   clearInterval(timers[workOrBreak].timerID);
   if (workOrBreak === "work") {
+    if (timers["break"].count === 4) { 
+      timers["break"].minutes *= 3; // Après quatres pauses, la durée de la pause est trois fois plus longue.
+      timers["break"].count = 0;
+      // Les tomates sont réinitialisés:
+      setTomatoesOpacity(timers["break"].count);
+    }
     startTimer("break");
     countingDown["work"] = false;
   }
   if (workOrBreak === "break") {
+    timers["break"].count += 1;
+    // Une tomate devient opaque:
+    setTomatoesOpacity(timers["break"].count);
     startTimer("work");
     countingDown["break"] = false;
   }
 }
 
+function pauseTimer() {
+  clearInterval(timers["work"].timerID);
+  clearInterval(timers["break"].timerID);
+  pause = true;
+}
