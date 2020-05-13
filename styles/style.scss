@@ -3,7 +3,6 @@
 $tomato-red: #BF131C;
 $tomato-green: #4DC126;
 
-
 @mixin counter-box {
   display: flex;
   flex-direction: column;
@@ -34,6 +33,7 @@ $tomato-green: #4DC126;
   border: 1px solid darken($tomato-red, 20%);
 }
 
+
 body {
   box-sizing: border-box;
   margin: 0;
@@ -45,7 +45,6 @@ body {
   background-position: center;
   font-family: 'Mystery Quest', cursive;
 }
-
 
 main {
   width: 60%;
@@ -65,6 +64,24 @@ main {
   h2 { @media (max-width: 480px) {display: none;} }
 }
 
+input[type=range] {
+  height: 34px;
+  -webkit-appearance: none;
+  margin: 10px 0;
+  width: 100%;
+  background-color: transparent;
+  &:focus { outline: none; }
+  &::-webkit-slider-runnable-track { @include input-track(); }
+  &::-webkit-slider-runnable-track  { @include input-track(); }
+  &::-webkit-slider-thumb {
+    @include input-thumb();
+    -webkit-appearance: none;
+    margin-top: -7px;
+  }
+  &::-moz-range-track { @include input-track(); }
+  &::-moz-range-thumb { @include input-thumb(); }
+  &::-moz-focus-outer { border: 0;}
+}
 
 .countdown {
   box-sizing: border-box;
@@ -75,7 +92,6 @@ main {
     width: 125px;
   }
 }
-
 
 #left {
   text-align: center;
@@ -108,24 +124,4 @@ main {
 #right {
   text-align: center;
   #break { @include counter-box(); }
-}
-
-
-input[type=range] {
-  height: 34px;
-  -webkit-appearance: none;
-  margin: 10px 0;
-  width: 100%;
-  background-color: transparent;
-  &:focus { outline: none; }
-  &::-webkit-slider-runnable-track { @include input-track(); }
-  &::-webkit-slider-runnable-track  { @include input-track(); }
-  &::-webkit-slider-thumb {
-    @include input-thumb();
-    -webkit-appearance: none;
-    margin-top: -7px;
-  }
-  &::-moz-range-track { @include input-track(); }
-  &::-moz-range-thumb { @include input-thumb(); }
-  &::-moz-focus-outer { border: 0;}
 }
