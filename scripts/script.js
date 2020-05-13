@@ -30,6 +30,10 @@ breakTimeRange.onchange = () => {
   updateTimer("break", "minutes", breakTimeRange.value);
 }
 
+tomatoLogo.onclick = () => {
+  startTimer("work");
+} 
+
 
 function updateTimer(workOrBreak, minutesOrSeconds, value) {
   if (!countingDown[workOrBreak]) {
@@ -38,29 +42,39 @@ function updateTimer(workOrBreak, minutesOrSeconds, value) {
     if (minutesOrSeconds = "minutes") {
       document.querySelector("#" + workOrBreak + "-minutes").innerHTML = value || 0;
       document.querySelector("#" + workOrBreak + "-seconds").innerHTML = "00";
+      timers[workOrBreak].minutes = value || 0;
     }
     else if (minutesOrSeconds = "seconds") {
       document.querySelector("#" + workOrBreak + "-seconds").innerHTML = value || 0;
+      timers[workOrBreak].seconds = value || 0;
     }
   }
 }
 
 function startTimer(workOrBreak) {
   countingDown[workOrBreak] = true;
-  let input = "#" + workOrBreak + "time";
   timers[workOrBreak].timerID = setInterval(function () {
     timers[workOrBreak].seconds -= 1;
     if (timers[workOrBreak].seconds < 0) {
-      if (timers[workOrBreak] == 0) {
-        return stopTimer();
+      if (timers[workOrBreak].minutes == 0) {
+        return stopTimer(workOrBreak);
       }
       timers[workOrBreak].seconds = 59;
-      timers[workOrBreak].minutes--;
+      timers[workOrBreak].minutes -= 1;
     }
 
     updateTimer(workOrBreak, "seconds", timers[workOrBreak].minutes);
     updateTimer(workOrBreak, "minutes", timers[workOrBreak].seconds);
 
   }, 1000)
+}
+
+function stopTimer(workOrBreak) {
+  clearInterval(timers[workOrBreak].timerID);
+  if (workOrBreak = "work") {
+    startTimer("break");
+    countingDown["work"] = false;
+    countingDown["break"] = true;
+  }
 }
 
