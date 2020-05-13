@@ -60,6 +60,7 @@ function updateTimer(workOrBreak, minutesOrSeconds, value) {
     document.querySelector("#" + workOrBreak + "-seconds").innerHTML = "00"; // Selectionne et met à jour le compteur correspondant.
     // Le timer est remis à jour afin que celui-ci soit aussi à jour dans le cas d'une mise à jour manuelle.
     timers[workOrBreak].minutes = Number(value);
+    timers[workOrBreak].seconds = 0;
   }
   // Mise à jour des secondes:
   else if (minutesOrSeconds === "seconds") {
