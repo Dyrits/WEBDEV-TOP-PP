@@ -81,7 +81,10 @@ function stopTimer(workOrBreak) {
   if (workOrBreak === "work") {
     startTimer("break");
     countingDown["work"] = false;
-    countingDown["break"] = true;
+  }
+  if (workOrBreak === "break") {
+    startTimer("work");
+    countingDown["break"] = false;
   }
 }
 
