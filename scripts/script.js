@@ -33,11 +33,15 @@ breakTimeRange.onchange = () => {
   breakTimeLabel.innerHTML = breakTimeRange.value;
   // Si le compteur tourne déjà, la valeur n'est pas mis à jour:
   if (!countingDown["break"]) { updateTimer("break", "minutes", breakTimeRange.value); }
-  else if (pause) { updateTimer("work", "minutes", breakTimeRange.value); }
+  else if (pause) { updateTimer("break", "minutes", breakTimeRange.value); }
 }
 
 tomatoLogo.onclick = () => {
-  if (!pause) {pauseTimer()}
+  if (!pause) {
+    pauseTimer()
+    updateTimer("work", "minutes", workTimeRange.value);
+    updateTimer("break", "minutes", breakTimeRange.value);
+  }
   else {
     pause = false;
     countingDown["break"] ? startTimer("break") : startTimer("work"); // Le timer est relancé sur la phase où il s'était arrêté.
