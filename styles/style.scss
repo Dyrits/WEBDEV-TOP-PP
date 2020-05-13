@@ -43,6 +43,9 @@ main {
         flex-wrap: wrap;
         padding-top: 0px;
     }
+    h2 {
+      @media (max-width: 480px) {display: none;}
+    }
 }
 
 

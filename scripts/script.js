@@ -91,6 +91,7 @@ function stopTimer(workOrBreak) {
       // Les tomates sont réinitialisés:
       setTomatoesOpacity(0);
     }
+    timers["break"].minutes = workTimeRange.value; // La valeur est réinitialiser à la valeur du de l'input.
     startTimer("break");
     countingDown["work"] = false;
   }
@@ -98,6 +99,7 @@ function stopTimer(workOrBreak) {
     timers["break"].count += 1;
     // Une tomate devient opaque:
     setTomatoesOpacity(timers["break"].count);
+    timers["work"].minutes = workTimeRange.value; // La valeur est réinitialiser à la valeur du de l'input.
     startTimer("work");
     countingDown["break"] = false;
   }
