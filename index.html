@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pomodoro Timer</title>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+  <main>
+    <section id="left">
+      <div id="work">
+        <div id="work-countdown" class="countdown">25:00</div>
+        <div>
+          <input type="range" name="worktime" id="worktime" min="1" max="60" value="25">
+          <label for="worktime" id="worktime-label">25</label>
+        </div>
+      </div>
+
+    </section>
+    <section id="center">
+      <img src="styles/timer-logo.png" alt="" id="logo">
+      <h1>Pomodoro Timer</h1>
+      <img src="styles/tomato.png" class="tomato-session">
+      <img src="styles/tomato.png" class="tomato-session">
+      <img src="styles/tomato.png" class="tomato-session">
+      <img src="styles/tomato.png" class="tomato-session">
+
+    </section>
+    <section id="right">
+      <div id="break">
+        <div id="break-countdown" class="countdown">05:00</div>
+        <div>
+          <input type="range" name="breaktime" id="breaktime" min="1" max="30" value="5">
+          <label for="breaktime" id="breaktime-label">5</label>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="scripts/script.js"></script>
+</body>
+
+</html>

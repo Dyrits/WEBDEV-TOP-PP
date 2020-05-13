@@ -1,0 +1,209 @@
+@import url("https://fonts.googleapis.com/css2?family=Mystery+Quest&display=swap");
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url("tomatoes.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  font-family: 'Mystery Quest', cursive;
+}
+
+main {
+  width: 60%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-negative: 2;
+      flex-shrink: 2;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media (max-width: 768px) {
+  main {
+    width: 80%;
+    padding-top: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    padding-top: 0px;
+  }
+}
+
+.countdown {
+  font-size: 5rem;
+}
+
+@media (max-width: 768px) {
+  .countdown {
+    font-size: 3rem;
+  }
+}
+
+#left {
+  text-align: center;
+}
+
+#left #work {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #4DC126;
+  text-shadow: 0 0 2px #BF131C;
+  margin: 20px;
+}
+
+#center {
+  text-align: center;
+}
+
+#center #logo {
+  padding-top: 10px;
+  width: 300px;
+}
+
+@media (max-width: 768px) {
+  #center #logo {
+    width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  #center #logo {
+    width: 100px;
+  }
+}
+
+#center h1 {
+  color: #BF131C;
+  text-transform: uppercase;
+  text-shadow: 0 0 2px #4DC126;
+  font-size: 2rem;
+}
+
+@media (max-width: 768px) {
+  #center h1 {
+    font-size: 1.5rem;
+  }
+}
+
+#center .tomato-session {
+  width: 50px;
+  display: inline;
+  opacity: 0.25;
+}
+
+@media (max-width: 768px) {
+  #center .tomato-session {
+    width: 25px;
+  }
+}
+
+#right {
+  text-align: center;
+}
+
+#right #break {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #4DC126;
+  text-shadow: 0 0 2px #BF131C;
+  margin: 20px;
+}
+
+input[type=range] {
+  height: 34px;
+  -webkit-appearance: none;
+  margin: 10px 0;
+  width: 100%;
+  background-color: transparent;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 12px;
+  cursor: pointer;
+  -webkit-box-shadow: 1px 1px 1px #BF131C;
+          box-shadow: 1px 1px 1px #BF131C;
+  background: #BF131C;
+  border-radius: 6px;
+  border: 1px solid #620a0e;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-box-shadow: 3px 3px 3px #4DC126;
+          box-shadow: 3px 3px 3px #4DC126;
+  border: 2px solid #4DC126;
+  height: 23px;
+  width: 23px;
+  border-radius: 23px;
+  background: #2b6c15;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -7px;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #BF131C;
+}
+
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 12px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #BF131C;
+  background: #BF131C;
+  border-radius: 6px;
+  border: 1px solid #620a0e;
+}
+
+input[type=range]::-moz-range-thumb {
+  box-shadow: 3px 3px 3px #4DC126;
+  border: 2px solid #4DC126;
+  height: 23px;
+  width: 23px;
+  border-radius: 23px;
+  background: #2b6c15;
+  cursor: pointer;
+}
+
+input[type=range]::-moz-focus-outer {
+  border: 0;
+}
+/*# sourceMappingURL=style.css.map */
