@@ -36,18 +36,16 @@ tomatoLogo.onclick = () => {
 
 
 function updateTimer(workOrBreak, minutesOrSeconds, value) {
-  if (!countingDown[workOrBreak]) {
-    if (value < 0) { value = 0; }
-    if (value < 10) { value = "0" + value; }
-    if (minutesOrSeconds = "minutes") {
-      document.querySelector("#" + workOrBreak + "-minutes").innerHTML = value || 0;
-      document.querySelector("#" + workOrBreak + "-seconds").innerHTML = "00";
-      timers[workOrBreak].minutes = value || 0;
-    }
-    else if (minutesOrSeconds = "seconds") {
-      document.querySelector("#" + workOrBreak + "-seconds").innerHTML = value || 0;
-      timers[workOrBreak].seconds = value || 0;
-    }
+  if (value < 0) { value = 0; }
+  if (value < 10) { value = "0" + value; }
+  if (minutesOrSeconds === "minutes") {
+    document.querySelector("#" + workOrBreak + "-minutes").innerHTML = value;
+    document.querySelector("#" + workOrBreak + "-seconds").innerHTML = "00";
+    timers[workOrBreak].minutes = Number(value);
+  }
+  else if (minutesOrSeconds === "seconds") {
+    document.querySelector("#" + workOrBreak + "-seconds").innerHTML = value;
+    timers[workOrBreak].seconds = Number(value);
   }
 }
 
@@ -56,22 +54,22 @@ function startTimer(workOrBreak) {
   timers[workOrBreak].timerID = setInterval(function () {
     timers[workOrBreak].seconds -= 1;
     if (timers[workOrBreak].seconds < 0) {
-      if (timers[workOrBreak].minutes == 0) {
+      if (timers[workOrBreak].minutes === 0) {
         return stopTimer(workOrBreak);
       }
       timers[workOrBreak].seconds = 59;
       timers[workOrBreak].minutes -= 1;
     }
 
-    updateTimer(workOrBreak, "seconds", timers[workOrBreak].minutes);
-    updateTimer(workOrBreak, "minutes", timers[workOrBreak].seconds);
+    updateTimer(workOrBreak, "minutes", timers[workOrBreak].minutes);
+    updateTimer(workOrBreak, "seconds", timers[workOrBreak].seconds);
 
   }, 1000)
 }
 
 function stopTimer(workOrBreak) {
   clearInterval(timers[workOrBreak].timerID);
-  if (workOrBreak = "work") {
+  if (workOrBreak === "work") {
     startTimer("break");
     countingDown["work"] = false;
     countingDown["break"] = true;
