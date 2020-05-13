@@ -5,15 +5,22 @@ const breakTimeLabel = document.querySelector("#breaktime-label");
 const tomatoLogo = document.querySelector("#logo");
 const countingDown = false;
 
-workTimeRange.onchange = () => workTimeLabel.innerHTML = workTimeRange.value;
-breakTimeRange.onchange = () => breakTimeLabel.innerHTML = breakTimeRange.value;
+workTimeRange.onchange = () => {
+  workTimeLabel.innerHTML = workTimeRange.value;
+  updateTimer("work", workTimeRange.value);
+}
+breakTimeRange.onchange = () => {
+  breakTimeLabel.innerHTML = breakTimeRange.value;
+  updateTimer("break", workTimeRange.value);
+}
 
-function updateTimer(timer) {
+
+
+function updateTimer(workOrBreak, value) {
   if (!countingDown) {
     if (value < 0) { value = 0; }
     if (value < 10) { value = "0" + value; }
-    if (value > 59) { value = 59; }
+    document.querySelector("#" + workOrBreak + "-minutes").innerHTML = value || 0;
+    document.querySelector("#" + workOrBreak + "-seconds").innerHTML = "00";
   }
-  document.querySelector(".minutes").innerHTML = (value || 0);
-  timerObj[key] = value;
 }
