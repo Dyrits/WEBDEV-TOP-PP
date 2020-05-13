@@ -16,6 +16,7 @@ $tomato-green: #4DC126;
 
 
 body {
+    box-sizing: border-box !important;
     margin: 0;
     padding: 0;
     background-image: url("tomatoes.jpg");

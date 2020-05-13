@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Mystery+Quest&display=swap");
 body {
+  -webkit-box-sizing: border-box !important;
+          box-sizing: border-box !important;
   margin: 0;
   padding: 0;
   background-image: url("tomatoes.jpg");
