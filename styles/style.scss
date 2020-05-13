@@ -16,7 +16,7 @@ $tomato-green: #4DC126;
 
 
 body {
-    box-sizing: border-box !important;
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
     background-image: url("tomatoes.jpg");
@@ -43,23 +43,24 @@ main {
         flex-wrap: wrap;
         padding-top: 0px;
     }
-    h2 {
-      @media (max-width: 480px) {display: none;}
-    }
+    h2 { @media (max-width: 480px) {display: none;} }
 }
 
 
 .countdown {
+    box-sizing: border-box;
+    width: 250px;
     font-size: 5rem;
-    @media (max-width: 768px) {font-size: 3rem;}
+    @media (max-width: 768px) {
+      font-size: 2.5rem;
+      width: 125px;
+    }
 }
 
 
 #left {
     text-align: center;
-    #work {
-        @include counter-box();
-    }
+    #work { @include counter-box(); }
 }
 
 #center {
@@ -67,29 +68,27 @@ main {
     #logo {
     padding-top: 10px;
     width: 300px;
-    @media (max-width: 768px) {width: 200px;}
-    @media (max-width: 480px) {width: 100px;}
+    @media (max-width: 768px) { width: 200px; }
+    @media (max-width: 480px) { width: 100px; }
     }
     h1 {
     color: $tomato-red;
     text-transform: uppercase;
     text-shadow: 0 0 2px $tomato-green;
     font-size: 2rem;
-    @media (max-width: 768px) {font-size: 1.5rem;}
+    @media (max-width: 768px) { font-size: 1.5rem; }
     }
     .tomato-session {
         width: 50px;
-        display: inline;
+        display: inline-block;
         opacity: 0.25;
-        @media (max-width: 768px) {width: 25px;}
+        @media (max-width: 768px) { width: 25px; }
     }
 }
 
 #right {
     text-align: center;
-    #break {
-        @include counter-box();
-    }
+    #break { @include counter-box(); }
 }
 
 
@@ -99,9 +98,7 @@ input[type=range] {
     margin: 10px 0;
     width: 100%;
     background-color: transparent;
-    &:focus {
-        outline: none;
-    }
+    &:focus { outline: none; }
     &::-webkit-slider-runnable-track {
         width: 100%;
         height: 12px;
@@ -122,9 +119,7 @@ input[type=range] {
         -webkit-appearance: none;
         margin-top: -7px;
     }
-    &:focus::-webkit-slider-runnable-track {
-        background: $tomato-red;
-    }
+    &:focus::-webkit-slider-runnable-track { background: $tomato-red; }
     &::-moz-range-track {
         width: 100%;
         height: 12px;
@@ -142,9 +137,6 @@ input[type=range] {
         border-radius: 23px;
         background: darken($tomato-green, 20%);
         cursor: pointer;
-
     }
-    &::-moz-focus-outer {
-        border: 0;
-    }
+    &::-moz-focus-outer { border: 0;}
 }

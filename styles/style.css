@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Mystery+Quest&display=swap");
 body {
-  -webkit-box-sizing: border-box !important;
-          box-sizing: border-box !important;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   margin: 0;
   padding: 0;
   background-image: url("tomatoes.jpg");
@@ -50,12 +50,16 @@ main {
 }
 
 .countdown {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 250px;
   font-size: 5rem;
 }
 
 @media (max-width: 768px) {
   .countdown {
-    font-size: 3rem;
+    font-size: 2.5rem;
+    width: 125px;
   }
 }
 
@@ -118,7 +122,7 @@ main {
 
 #center .tomato-session {
   width: 50px;
-  display: inline;
+  display: inline-block;
   opacity: 0.25;
 }
 

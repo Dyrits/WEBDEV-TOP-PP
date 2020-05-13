@@ -26,12 +26,14 @@ workTimeRange.onchange = () => {
   workTimeLabel.innerHTML = workTimeRange.value;
   // Si le compteur tourne déjà, la valeur n'est pas mis à jour:
   if (!countingDown["work"]) { updateTimer("work", "minutes", workTimeRange.value); }
+  else if (pause) { updateTimer("work", "minutes", workTimeRange.value); }
 }
 
 breakTimeRange.onchange = () => {
   breakTimeLabel.innerHTML = breakTimeRange.value;
   // Si le compteur tourne déjà, la valeur n'est pas mis à jour:
   if (!countingDown["break"]) { updateTimer("break", "minutes", breakTimeRange.value); }
+  else if (pause) { updateTimer("work", "minutes", breakTimeRange.value); }
 }
 
 tomatoLogo.onclick = () => {
@@ -69,7 +71,7 @@ function startTimer(workOrBreak) {
     if (timers[workOrBreak].seconds < 0) {
       // Si le compteur se termine, celui-ci est stoppé, et le suivant est lancé:
       if (timers[workOrBreak].minutes === 0) {
-        return stopTimer(workOrBreak);
+        return switchTimer(workOrBreak);
       }
       timers[workOrBreak].seconds = 59; // Si le compteur descend en dessous de 0, le nombre de secondes est mis à jour à 59 
       timers[workOrBreak].minutes -= 1; // Si le compteur descend en dessous de 0, décrémente le compteur de minute.
@@ -81,7 +83,7 @@ function startTimer(workOrBreak) {
   }, 1000)
 }
 
-function stopTimer(workOrBreak) {
+function switchTimer(workOrBreak) {
   // L'intervalle est stoppé, et l'autre compteur est lancé:
   clearInterval(timers[workOrBreak].timerID);
   if (workOrBreak === "work") {
