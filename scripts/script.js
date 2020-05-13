@@ -11,9 +11,8 @@ workTimeRange.onchange = () => {
 }
 breakTimeRange.onchange = () => {
   breakTimeLabel.innerHTML = breakTimeRange.value;
-  updateTimer("break", workTimeRange.value);
+  updateTimer("break", breakTimeRange.value);
 }
-
 
 
 function updateTimer(workOrBreak, value) {
