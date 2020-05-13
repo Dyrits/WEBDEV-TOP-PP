@@ -3,7 +3,10 @@ const workTimeLabel = document.querySelector("#worktime-label");
 const breakTimeRange = document.querySelector("#breaktime");
 const breakTimeLabel = document.querySelector("#breaktime-label");
 const tomatoLogo = document.querySelector("#logo");
-const countingDown = false;
+const countingDown = {
+  "work": false,
+  "break": false
+};
 
 workTimeRange.onchange = () => {
   workTimeLabel.innerHTML = workTimeRange.value;
@@ -16,7 +19,7 @@ breakTimeRange.onchange = () => {
 
 
 function updateTimer(workOrBreak, value) {
-  if (!countingDown) {
+  if (!countingDown[workOrBreak]) {
     if (value < 0) { value = 0; }
     if (value < 10) { value = "0" + value; }
     document.querySelector("#" + workOrBreak + "-minutes").innerHTML = value || 0;
