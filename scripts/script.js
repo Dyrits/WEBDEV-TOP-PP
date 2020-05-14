@@ -26,14 +26,20 @@ workTimeRange.oninput = () => {
   workTimeLabel.innerHTML = workTimeRange.value;
   // Si le compteur tourne déjà, la valeur n'est pas mis à jour:
   if (!countingDown["work"]) { updateTimer("work", "minutes", workTimeRange.value); }
-  else if (pause) { updateTimer("work", "minutes", workTimeRange.value); }
+  else if (pause) { 
+    timers["work"].seconds = 0;
+    updateTimer("work", "minutes", workTimeRange.value); 
+  }
 }
 
 breakTimeRange.oninput = () => {
   breakTimeLabel.innerHTML = breakTimeRange.value;
   // Si le compteur tourne déjà, la valeur n'est pas mis à jour:
   if (!countingDown["break"]) { updateTimer("break", "minutes", breakTimeRange.value); }
-  else if (pause) { updateTimer("break", "minutes", breakTimeRange.value); }
+  else if (pause) { 
+    timers["break"].seconds = 0;
+    updateTimer("break", "minutes", breakTimeRange.value); 
+  }
 }
 
 
