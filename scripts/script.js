@@ -22,14 +22,14 @@ const timers = {
 }
 let pause = true;
 
-workTimeRange.onchange = () => {
+workTimeRange.oninput = () => {
   workTimeLabel.innerHTML = workTimeRange.value;
   // Si le compteur tourne déjà, la valeur n'est pas mis à jour:
   if (!countingDown["work"]) { updateTimer("work", "minutes", workTimeRange.value); }
   else if (pause) { updateTimer("work", "minutes", workTimeRange.value); }
 }
 
-breakTimeRange.onchange = () => {
+breakTimeRange.oninput = () => {
   breakTimeLabel.innerHTML = breakTimeRange.value;
   // Si le compteur tourne déjà, la valeur n'est pas mis à jour:
   if (!countingDown["break"]) { updateTimer("break", "minutes", breakTimeRange.value); }
